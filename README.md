@@ -1,4 +1,4 @@
-stacks-queues
+Stacks and Queues
 =============
 
-Java Stack and Queues 
+Stack, Queue and Priority Queue
