@@ -12,11 +12,23 @@ public class ReverseWord {
     private String word;
     private StackImpl stack;
 
+    /**
+     * ReverseWord public constructor
+     *
+     * @param input string to be reversed
+     * @param stack stack with the string
+     */
     public ReverseWord(String input, StackImpl stack) {
         this.word = input;
         this.stack = stack;
     }
 
+    /**
+     * Set word
+     *
+     * @param input string to be reversed
+     * @return ReverseWord instance
+     */
     public static ReverseWord setWord(String input) {
         StackImpl stack = new StackImpl(input.length());
         for (int i = 0; i < input.length(); i++) {
@@ -25,6 +37,11 @@ public class ReverseWord {
         return new ReverseWord(input, stack);
     }
 
+    /**
+     * Reverse word
+     *
+     * @return string reversed
+     */
     public String reverse() {
         StringBuilder sb = new StringBuilder();
         for (int i = this.word.length() - 1; i >= 0; i--) {
