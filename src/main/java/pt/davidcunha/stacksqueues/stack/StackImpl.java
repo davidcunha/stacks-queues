@@ -11,7 +11,7 @@ public class StackImpl {
 
     private int max;
     private int top;
-    private long[] stackArray;
+    private char[] stackArray;
 
     /**
      * StackImpl public constructor
@@ -20,19 +20,19 @@ public class StackImpl {
      */
     public StackImpl(int size) {
         max = size;
-        stackArray = new long[max];
+        stackArray = new char[max];
         top = -1;
     }
 
     /**
-     * Stack public constructor
+     * Stack push
      *
-     * @param size array initialization
+     * @param ch append char to the stack
      */
-    public void push(long n) {
+    public void push(char ch) {
         if (!isFull()) {
             top++;
-            stackArray[top] = n;
+            stackArray[top] = ch;
         }
     }
 
@@ -41,13 +41,13 @@ public class StackImpl {
      *
      * @return last inserted element
      */
-    public long pop() {
-        long n = 0L;
+    public char pop() {
+        char ch = '\u0000';
         if (!isEmpty()) {
-            n = stackArray[top];
+            ch = stackArray[top];
             top--;
         }
-        return n;
+        return ch;
     }
 
     /**
@@ -55,7 +55,7 @@ public class StackImpl {
      *
      * @return last inserted element
      */
-    public long peek() {
+    public char peek() {
         return stackArray[top];
     }
 
