@@ -2,6 +2,7 @@ package pt.davidcunha.stacksqueues;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import pt.davidcunha.stacksqueues.stack.DelimiterMatching;
 import pt.davidcunha.stacksqueues.stack.ReverseWord;
 import pt.davidcunha.stacksqueues.stack.StackImpl;
 
@@ -28,5 +29,15 @@ public class StackTest {
     public void testReverse() {
         ReverseWord revword = ReverseWord.setWord("david");
         assertEquals("divad", revword.reverse());
+    }
+    
+    @Test
+    public void testDelimeterMatching() {
+         assertEquals("Code Complete!", 
+                 DelimiterMatching.checkCode("if(var){System.out.println(\"ok\");} else { System.out.println(\"error\")}"));
+         assertEquals("Error missing right delimeter for {", 
+                 DelimiterMatching.checkCode("if(var){System.out.println(\"ok\"); else { System.out.println(\"error\")}"));
+         assertEquals("Error missing left delimeter for } at 33", 
+                 DelimiterMatching.checkCode("if(var) System.out.println(\"ok\");} else { System.out.println(\"error\")}"));
     }
 }
