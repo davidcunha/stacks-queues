@@ -19,9 +19,9 @@ public class StackImpl {
      * @param size array initialization
      */
     public StackImpl(int size) {
-        max = size;
-        stackArray = new char[max];
-        top = -1;
+        this.max = size;
+        this.stackArray = new char[max];
+        this.top = -1;
     }
 
     /**
@@ -31,8 +31,8 @@ public class StackImpl {
      */
     public void push(char ch) {
         if (!isFull()) {
-            top++;
-            stackArray[top] = ch;
+            this.top++;
+            stackArray[this.top] = ch;
         }
     }
 
@@ -44,8 +44,8 @@ public class StackImpl {
     public char pop() {
         char ch = '\u0000';
         if (!isEmpty()) {
-            ch = stackArray[top];
-            top--;
+            ch = stackArray[this.top];
+            this.top--;
         }
         return ch;
     }
@@ -56,7 +56,7 @@ public class StackImpl {
      * @return last inserted element
      */
     public char peek() {
-        return stackArray[top];
+        return stackArray[this.top];
     }
 
     /**
@@ -65,7 +65,7 @@ public class StackImpl {
      * @return true or false
      */
     public boolean isEmpty() {
-        return (top == -1);
+        return (this.top == -1);
     }
 
     /**
@@ -74,6 +74,6 @@ public class StackImpl {
      * @return true or false
      */
     public boolean isFull() {
-        return (top == max - 1);
+        return (this.top == max - 1);
     }
 }
