@@ -33,12 +33,14 @@ public class QueueImpl {
      *
      */
     public void insert(long n) {
-        if (this.rear == this.max - 1) {
-            this.rear = -1;
+        if (!isFull()) {
+            if (this.rear == this.max - 1) {
+                this.rear = -1;
+            }
+            this.rear++;
+            this.queueArray[this.rear] = n;
+            this.nItems++;
         }
-        this.rear++;
-        this.queueArray[this.rear] = n;
-        this.nItems++;
     }
 
     /**
@@ -47,12 +49,15 @@ public class QueueImpl {
      * @return first element
      */
     public long remove() {
-        long temp = this.queueArray[this.front];
-        this.front++;
-        if (this.front == this.max) {
-            this.front = 0;
+        long temp = 0L;
+        if (!isEmpty()) {
+            temp = this.queueArray[this.front];
+            this.front++;
+            if (this.front == this.max) {
+                this.front = 0;
+            }
+            this.nItems--;
         }
-        this.nItems--;
         return temp;
     }
 
@@ -83,6 +88,11 @@ public class QueueImpl {
         return (this.nItems == this.max);
     }
 
+    /**
+     * Queue size
+     *
+     * @return number of elements
+     */
     public int size() {
         return this.nItems;
     }
