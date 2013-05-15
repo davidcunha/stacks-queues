@@ -20,7 +20,7 @@ public class StackImpl {
      */
     public StackImpl(int size) {
         this.max = size;
-        this.stackArray = new char[max];
+        this.stackArray = new char[this.max];
         this.top = -1;
     }
 
@@ -74,6 +74,6 @@ public class StackImpl {
      * @return true or false
      */
     public boolean isFull() {
-        return (this.top == max - 1);
+        return (this.top == this.max - 1);
     }
 }

@@ -9,5 +9,5 @@ package pt.davidcunha.stacksqueues.queue;
  */
 public class QueueImpl {
 
-   
+  
 }
