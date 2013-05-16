@@ -18,7 +18,7 @@ public class QueueImpl {
     /**
      * QueueImpl public constructor
      *
-     * @param size array initialization
+     * @param size structure initialization
      */
     public QueueImpl(int size) {
         this.max = size;
@@ -33,14 +33,12 @@ public class QueueImpl {
      *
      */
     public void insert(long n) {
-        if (!isFull()) {
-            if (this.rear == this.max - 1) {
-                this.rear = -1;
-            }
-            this.rear++;
-            this.queueArray[this.rear] = n;
-            this.nItems++;
+        if (this.rear == this.max - 1) {
+            this.rear = -1;
         }
+        this.rear++;
+        this.queueArray[this.rear] = n;
+        this.nItems++;
     }
 
     /**

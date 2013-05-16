@@ -37,7 +37,7 @@ public class StackTest {
                  DelimiterMatching.checkCode("if(var){System.out.println(\"ok\");} else { System.out.println(\"error\")}"));
          assertEquals("Error missing right delimeter for {", 
                  DelimiterMatching.checkCode("if(var){System.out.println(\"ok\"); else { System.out.println(\"error\")}"));
-         assertEquals("Error missing left delimeter for } at 33", 
+         assertEquals("Error } at 33", 
                  DelimiterMatching.checkCode("if(var) System.out.println(\"ok\");} else { System.out.println(\"error\")}"));
     }
 }

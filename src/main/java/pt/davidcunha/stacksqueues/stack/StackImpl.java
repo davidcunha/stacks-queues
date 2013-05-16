@@ -7,30 +7,32 @@ package pt.davidcunha.stacksqueues.stack;
  *
  * @author David Cunha <davidgoncalvescunha AT gmail DOT pt>
  */
-public class StackImpl {
+public class StackImpl<T> {
 
     private int max;
     private int top;
-    private char[] stackArray;
+    private T[] stackArray;
 
     /**
      * StackImpl public constructor
      *
-     * @param size array initialization
+     * @param size structure initialization
      */
     public StackImpl(int size) {
         this.max = size;
-        this.stackArray = new char[this.max];
+        this.stackArray = (T[]) new Object[this.max];
         this.top = -1;
     }
 
     /**
      * Stack push
      *
-     * @param ch append char to the stack
+     * @param ch append type to the stack
      */
-    public void push(char ch) {
-        if (!isFull()) {
+    public void push(T ch) {
+        if (isFull()) {
+            System.out.println("stack is full");
+        } else {
             this.top++;
             stackArray[this.top] = ch;
         }
@@ -41,11 +43,14 @@ public class StackImpl {
      *
      * @return last inserted element
      */
-    public char pop() {
-        char ch = '\u0000';
-        if (!isEmpty()) {
+    public T pop() {
+        T ch = null;
+        if (isEmpty()) {
+            System.out.println("stack is empty");
+        } else {
             ch = stackArray[this.top];
             this.top--;
+
         }
         return ch;
     }
@@ -55,7 +60,7 @@ public class StackImpl {
      *
      * @return last inserted element
      */
-    public char peek() {
+    public T peek() {
         return stackArray[this.top];
     }
 

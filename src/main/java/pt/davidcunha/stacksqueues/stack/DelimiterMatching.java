@@ -28,16 +28,20 @@ public class DelimiterMatching {
                 case '}':
                 case ')':
                 case ']':
-                    char chx = stack.pop();
-                    if ((ch == '}' && chx != '{') || (ch == ')' && chx != '(') || (ch == ']' && chx != '[')) {
-                        return "Error missing left delimeter for " + ch + " at " + i;
+                    if (!stack.isEmpty()) {
+                        char chx = (Character) stack.pop();
+                        if ((ch == '}' && chx != '{') || (ch == ')' && chx != '(') || (ch == ']' && chx != '[')) {
+                            return "Error missing left delimeter for " + ch + " at " + i;
+                        }
+                    } else {
+                        return "Error " + ch + " at " + i;
                     }
                 default:
                     break;
             }
         }
         if (!stack.isEmpty()) {
-            char chx = stack.pop();
+            Character chx = (Character) stack.pop();
             return "Error missing right delimeter for " + chx;
         }
         return "Code Complete!";
