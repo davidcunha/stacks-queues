@@ -7,13 +7,13 @@ package pt.davidcunha.stacksqueues.queue;
  *
  * @author David Cunha <davidgoncalvescunha AT gmail DOT pt>
  */
-public class QueueImpl {
+public class QueueImpl<T> {
 
     private int max;
     private int front;
     private int rear;
     private int nItems;
-    private long[] queueArray;
+    private T[] queueArray;
 
     /**
      * QueueImpl public constructor
@@ -24,7 +24,7 @@ public class QueueImpl {
         this.max = size;
         this.front = 0;
         this.rear = -1;
-        this.queueArray = new long[max];
+        this.queueArray = (T[]) new Object[max];
         this.nItems = 0;
     }
 
@@ -32,7 +32,7 @@ public class QueueImpl {
      * Insert new element in the queue
      *
      */
-    public void insert(long n) {
+    public void insert(T n) {
         if (this.rear == this.max - 1) {
             this.rear = -1;
         }
@@ -46,9 +46,11 @@ public class QueueImpl {
      *
      * @return first element
      */
-    public long remove() {
-        long temp = 0L;
-        if (!isEmpty()) {
+    public T remove() {
+        T temp = null;
+        if (isEmpty()) {
+            System.out.println("queue is empty");
+        } else {
             temp = this.queueArray[this.front];
             this.front++;
             if (this.front == this.max) {
@@ -64,7 +66,7 @@ public class QueueImpl {
      *
      * @return first element
      */
-    public long peek() {
+    public T peek() {
         return this.queueArray[front];
     }
 
