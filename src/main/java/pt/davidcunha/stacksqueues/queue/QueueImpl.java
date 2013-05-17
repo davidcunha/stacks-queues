@@ -29,10 +29,13 @@ public class QueueImpl<T> {
     }
 
     /**
-     * Insert new element in the queue
-     *
+     * Insert new element in the queue. If queue is full, it overwrites the old
+     * elements (circular buffer)
      */
     public void insert(T n) {
+        if (this.isFull()) {
+            this.remove();
+        }
         if (this.rear == this.max - 1) {
             this.rear = -1;
         }
