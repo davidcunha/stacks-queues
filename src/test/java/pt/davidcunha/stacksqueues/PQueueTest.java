@@ -13,12 +13,16 @@ public class PQueueTest {
     @Test
     public void setup() {
         PQueueImpl pqueue = new PQueueImpl(5);
-        pqueue.isEmpty();
+        assertTrue(pqueue.isEmpty());
         pqueue.insert(20);
         pqueue.insert(30);
+        assertEquals(20, pqueue.peek());
         pqueue.insert(10);
         pqueue.insert(40);
+        pqueue.remove();
         pqueue.insert(5);
+        assertEquals(5, pqueue.peek());
+        pqueue.insert(10);
         assertTrue(Arrays.equals(new long[]{40, 30, 20, 10, 5}, pqueue.getQueueArray()));
     }
 
@@ -33,4 +37,9 @@ public class PQueueTest {
         pqueue.insert(2);
     }
 
+    @Test(expected = IllegalStateException.class)
+    public void testEmptyness() {
+        PQueueImpl pqueue = new PQueueImpl(5);
+        pqueue.remove();
+    }
 }

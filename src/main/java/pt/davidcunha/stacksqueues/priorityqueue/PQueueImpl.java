@@ -7,7 +7,7 @@ package pt.davidcunha.stacksqueues.priorityqueue;
  *
  * @author David Cunha <davidgoncalvescunha AT gmail DOT pt>
  */
-public class PQueueImpl {
+public class PQueueImpl<T> {
 
     private int max;
     private int nItems;
@@ -24,6 +24,11 @@ public class PQueueImpl {
         this.nItems = 0;
     }
 
+    /**
+     * Queue getter
+     *
+     * @return array
+     */
     public long[] getQueueArray() {
         return queueArray;
     }
@@ -54,11 +59,42 @@ public class PQueueImpl {
         }
     }
 
-    public boolean isFull() {
-        return (nItems == max);
+    /**
+     * Remove front of the queue
+     *
+     */
+    public void remove() {
+        if (isEmpty()) {
+            throw new IllegalStateException("queue is empty");
+        } else {
+            this.nItems--;
+        }
     }
 
+    /**
+     * Queue peek front of the queue
+     *
+     * @return first element
+     */
+    public long peek() {
+        return this.queueArray[nItems - 1];
+    }
+
+    /**
+     * Queue is empty?
+     *
+     * @return true or false
+     */
     public boolean isEmpty() {
-        return (nItems == 0);
+        return (this.nItems == 0);
+    }
+
+    /**
+     * Queue is full?
+     *
+     * @return true or false
+     */
+    public boolean isFull() {
+        return (this.nItems == this.max);
     }
 }
