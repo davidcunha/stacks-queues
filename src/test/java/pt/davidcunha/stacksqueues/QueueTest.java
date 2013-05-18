@@ -12,13 +12,14 @@ public class QueueTest {
     @Test
     public void setup() {
         QueueImpl queue = new QueueImpl(5);
-        assertEquals(true, queue.isEmpty());
+        assertTrue(queue.isEmpty());
         queue.insert(20);
         queue.insert(30);
         queue.insert(40);
+        assertFalse(queue.isFull());
         queue.insert(50);
         queue.insert(60);
-        assertEquals(true, queue.isFull());
+        assertTrue(queue.isFull());
         assertEquals(20, queue.peek());
         queue.insert(70);
         assertEquals(30, queue.peek());

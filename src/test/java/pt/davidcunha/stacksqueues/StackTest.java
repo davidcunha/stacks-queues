@@ -14,14 +14,14 @@ public class StackTest {
     @Test
     public void setup() {
         StackImpl stack = new StackImpl(5);
-        assertEquals(true, stack.isEmpty());
+        assertTrue(stack.isEmpty());
         stack.push('d');
         stack.push('a');
         stack.push('v');
-        assertEquals(false, stack.isFull());
+        assertFalse(stack.isFull());
         stack.push('i');
         stack.push('d');
-        assertEquals(true, stack.isFull());
+        assertTrue(stack.isFull());
         assertEquals('d', stack.pop());
     }
 
@@ -30,14 +30,14 @@ public class StackTest {
         ReverseWord revword = ReverseWord.setWord("david");
         assertEquals("divad", revword.reverse());
     }
-    
+
     @Test
     public void testDelimeterMatching() {
-         assertEquals("Code Complete!", 
-                 DelimiterMatching.checkCode("if(var){System.out.println(\"ok\");} else { System.out.println(\"error\")}"));
-         assertEquals("Error missing right delimeter for {", 
-                 DelimiterMatching.checkCode("if(var){System.out.println(\"ok\"); else { System.out.println(\"error\")}"));
-         assertEquals("Error } at 33", 
-                 DelimiterMatching.checkCode("if(var) System.out.println(\"ok\");} else { System.out.println(\"error\")}"));
+        assertEquals("Code Complete!",
+                DelimiterMatching.checkCode("if(var){System.out.println(\"ok\");} else { System.out.println(\"error\")}"));
+        assertEquals("Error missing right delimeter for {",
+                DelimiterMatching.checkCode("if(var){System.out.println(\"ok\"); else { System.out.println(\"error\")}"));
+        assertEquals("Error } at 33",
+                DelimiterMatching.checkCode("if(var) System.out.println(\"ok\");} else { System.out.println(\"error\")}"));
     }
 }

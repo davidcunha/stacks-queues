@@ -13,6 +13,7 @@ public class PQueueTest {
     @Test
     public void setup() {
         PQueueImpl pqueue = new PQueueImpl(5);
+        pqueue.isEmpty();
         pqueue.insert(20);
         pqueue.insert(30);
         pqueue.insert(10);

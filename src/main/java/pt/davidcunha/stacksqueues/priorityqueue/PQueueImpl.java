@@ -27,7 +27,7 @@ public class PQueueImpl {
     public long[] getQueueArray() {
         return queueArray;
     }
-    
+
     /**
      * Insert new element in the priority queue. Lower number = higher priority
      */
@@ -56,5 +56,9 @@ public class PQueueImpl {
 
     public boolean isFull() {
         return (nItems == max);
+    }
+
+    public boolean isEmpty() {
+        return (nItems == 0);
     }
 }
