@@ -31,7 +31,7 @@ public class StackImpl<T> {
      */
     public void push(T ch) {
         if (isFull()) {
-            System.out.println("stack is full");
+            throw new IllegalStateException("stack is full");
         } else {
             this.top++;
             stackArray[this.top] = ch;
@@ -46,7 +46,7 @@ public class StackImpl<T> {
     public T pop() {
         T ch = null;
         if (isEmpty()) {
-            System.out.println("stack is empty");
+           throw new IllegalStateException("stack is empty");
         } else {
             ch = stackArray[this.top];
             this.top--;

@@ -52,7 +52,7 @@ public class QueueImpl<T> {
     public T remove() {
         T temp = null;
         if (isEmpty()) {
-            System.out.println("queue is empty");
+            throw new IllegalStateException("queue is empty");
         } else {
             temp = this.queueArray[this.front];
             this.front++;
