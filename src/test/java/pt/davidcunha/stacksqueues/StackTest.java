@@ -3,6 +3,7 @@ package pt.davidcunha.stacksqueues;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import pt.davidcunha.stacksqueues.stack.DelimiterMatching;
+import pt.davidcunha.stacksqueues.stack.Infix2Postfix;
 import pt.davidcunha.stacksqueues.stack.ReverseWord;
 import pt.davidcunha.stacksqueues.stack.StackImpl;
 
@@ -39,5 +40,17 @@ public class StackTest {
                 DelimiterMatching.checkCode("if(var){System.out.println(\"ok\"); else { System.out.println(\"error\")}"));
         assertEquals("Error } at 33",
                 DelimiterMatching.checkCode("if(var) System.out.println(\"ok\");} else { System.out.println(\"error\")}"));
+    }
+
+    @Test
+    public void testInfix2Postfix() {
+        Infix2Postfix i2p = new Infix2Postfix("A+B*C");
+        assertEquals("ABC*+", i2p.convert2Postfix());
+
+        Infix2Postfix i2p1 = new Infix2Postfix("A*(B+C)");
+        assertEquals("ABC+*", i2p1.convert2Postfix());
+
+        Infix2Postfix i2p2 = new Infix2Postfix("A*(B+C)-D/(E+F)");
+        assertEquals("ABC+*DEF+/-", i2p2.convert2Postfix());
     }
 }

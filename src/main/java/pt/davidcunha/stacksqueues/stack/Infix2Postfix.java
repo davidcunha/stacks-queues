@@ -21,13 +21,11 @@ public class Infix2Postfix {
     public String convert2Postfix() {
 
         for (int i = 0; i < this.input.length(); i++) {
-            System.out.println("For " + this.input.charAt(i));
             this.setOperators(this.input.charAt(i));
         }
 
         while (!this.stack.isEmpty()) {
             char ch = this.stack.pop().toString().charAt(0);
-            System.out.println("Stack " + ch);
             this.output.append(ch);
         }
 
@@ -97,10 +95,5 @@ public class Infix2Postfix {
             }
         }
         this.stack.push(ch1);
-    }
-
-    public static void main(String args[]) {
-        Infix2Postfix inf2post = new Infix2Postfix("A*(B+C)-D/(E+F)");
-        System.out.println(inf2post.convert2Postfix());
     }
 }
