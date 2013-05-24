@@ -13,11 +13,21 @@ public class Infix2Postfix {
     private StringBuilder output = new StringBuilder();
     private StackImpl stack;
 
+    /**
+     * Infix2Postfix public constructor
+     *
+     * @param input Infix expression
+     */
     public Infix2Postfix(String input) {
         this.input = input;
         this.stack = new StackImpl(this.input.length());
     }
 
+    /**
+     * Convert to Postfix
+     *
+     * @return String Postfix expression
+     */
     public String convert2Postfix() {
 
         for (int i = 0; i < this.input.length(); i++) {
@@ -32,6 +42,11 @@ public class Infix2Postfix {
         return this.output.toString();
     }
 
+    /**
+     * Set Operators
+     *
+     * @param ch element from the operation (operator or operand)
+     */
     private void setOperators(char ch) {
         switch (ch) {
             case '+':
@@ -69,6 +84,13 @@ public class Infix2Postfix {
         }
     }
 
+    /**
+     * Operators Precedence
+     *
+     * @param ch1 first operator
+     * @param pred precedence from the first operator (1 for + or - ane 2 for *
+     * or /)
+     */
     private void operatorsPred(char ch1, int pred) {
         while (!this.stack.isEmpty()) {
 
