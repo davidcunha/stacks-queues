@@ -31,7 +31,7 @@ public class Infix2Postfix {
     public String convert2Postfix() {
 
         for (int i = 0; i < this.input.length(); i++) {
-            this.setOperators(this.input.charAt(i));
+            this.setElement(this.input.charAt(i));
         }
 
         while (!this.stack.isEmpty()) {
@@ -43,27 +43,19 @@ public class Infix2Postfix {
     }
 
     /**
-     * Set Operators
+     * Set Element
      *
      * @param ch element from the operation (operator or operand)
      */
-    private void setOperators(char ch) {
+    private void setElement(char ch) {
         switch (ch) {
             case '+':
             case '-':
-                if (this.stack.isEmpty()) {
-                    this.stack.push(ch);
-                } else {
-                    this.operatorsPred(ch, 1);
-                }
+                this.operatorsPred(ch, 1);
                 break;
             case '*':
             case '/':
-                if (this.stack.isEmpty()) {
-                    this.stack.push(ch);
-                } else {
-                    this.operatorsPred(ch, 2);
-                }
+                this.operatorsPred(ch, 2);
                 break;
             case '(':
                 this.stack.push(ch);
