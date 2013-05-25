@@ -12,11 +12,21 @@ public class EvaluatePostfix {
     private String input;
     private StackImpl stack;
 
+    /**
+     * EvaluatePostfix public constructor
+     *
+     * @param input Postfix expression
+     */
     public EvaluatePostfix(String input) {
         this.input = input;
-        this.stack = new StackImpl(20);
+        this.stack = new StackImpl(this.input.length());
     }
 
+    /**
+     * Calculate result from Postfix expression
+     *
+     * @return int result
+     */
     public int calculatePostfix() {
 
         for (int i = 0; i < this.input.length(); i++) {
@@ -26,6 +36,11 @@ public class EvaluatePostfix {
         return Integer.valueOf(this.stack.pop().toString());
     }
 
+    /**
+     * Set Element
+     *
+     * @param ch element from the operation (operator or operand)
+     */
     public void setElement(char ch) {
         if (ch >= '0' && ch <= '9') {
             this.stack.push((int) (ch - '0'));
