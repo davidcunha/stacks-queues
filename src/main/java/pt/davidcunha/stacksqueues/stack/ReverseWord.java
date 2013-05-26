@@ -32,9 +32,9 @@ public class ReverseWord {
     public static ReverseWord setWord(String input) {
         StackImpl stack = new StackImpl(input.length());
         for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
+            stack.push(input.charAt(i)); //push each item from the word
         }
-        return new ReverseWord(input, stack);
+        return new ReverseWord(input, stack); //reverse word
     }
 
     /**
@@ -45,8 +45,8 @@ public class ReverseWord {
     public String reverse() {
         StringBuilder sb = new StringBuilder();
         for (int i = this.word.length() - 1; i >= 0; i--) {
-            sb.append(this.stack.pop());
+            sb.append(this.stack.pop()); //pop each item
         }
-        return sb.toString();
+        return sb.toString(); //reversed word
     }
 }
