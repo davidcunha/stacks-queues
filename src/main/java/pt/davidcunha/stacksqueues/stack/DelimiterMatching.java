@@ -12,7 +12,7 @@ public class DelimiterMatching {
     /**
      * Check code
      *
-     * @param code string to be reversed
+     * @param code string with the code to be processed
      * @return string with checkin process result
      */
     public static String checkCode(String code) {
@@ -23,13 +23,14 @@ public class DelimiterMatching {
                 case '{':
                 case '(':
                 case '[':
-                    stack.push(ch);
+                    stack.push(ch); //push item if it is an open bracket
                     break;
                 case '}':
                 case ')':
                 case ']':
                     if (!stack.isEmpty()) {
-                        char chx = (Character) stack.pop();
+                        //search the stack for finding if the opened bracket exists
+                        char chx = (Character) stack.pop(); 
                         if ((ch == '}' && chx != '{') || (ch == ')' && chx != '(') || (ch == ']' && chx != '[')) {
                             return "Error missing left delimeter for " + ch + " at " + i;
                         }
