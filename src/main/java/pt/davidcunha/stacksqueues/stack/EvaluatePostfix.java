@@ -29,11 +29,12 @@ public class EvaluatePostfix {
      */
     public int calculatePostfix() {
 
+        //iterate over the postfix expression
         for (int i = 0; i < this.input.length(); i++) {
             this.setElement(this.input.charAt(i));
         }
 
-        return Integer.valueOf(this.stack.pop().toString());
+        return Integer.valueOf(this.stack.pop().toString()); //pop final result
     }
 
     /**
@@ -42,12 +43,12 @@ public class EvaluatePostfix {
      * @param ch element from the operation (operator or operand)
      */
     public void setElement(char ch) {
-        if (ch >= '0' && ch <= '9') {
-            this.stack.push((int) (ch - '0'));
+        if (ch >= '0' && ch <= '9') { //accepts only single digit numbers
+            this.stack.push((int) (ch - '0')); //convert operand to int and push it
         } else {
             int result = 0;
-            String t = this.stack.pop().toString();
-            int b = Integer.valueOf(t);
+            //pop the last 2 elements
+            int b = Integer.valueOf(this.stack.pop().toString());
             int a = Integer.valueOf(this.stack.pop().toString());
             switch (ch) {
                 case '+':
@@ -63,8 +64,7 @@ public class EvaluatePostfix {
                     result = a / b;
                     break;
             }
-            System.out.println(result);
-            this.stack.push(result);
+            this.stack.push(result); //push result from the operation
         }
     }
 }
