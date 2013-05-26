@@ -30,16 +30,18 @@ public class Infix2Postfix {
      */
     public String convert2Postfix() {
 
+        //iterate over the infix expression
         for (int i = 0; i < this.input.length(); i++) {
             this.setElement(this.input.charAt(i));
         }
 
+        //pop operators and append to the postfix expression
         while (!this.stack.isEmpty()) {
             char ch = this.stack.pop().toString().charAt(0);
             this.output.append(ch);
         }
 
-        return this.output.toString();
+        return this.output.toString(); //final postfix expression
     }
 
     /**
@@ -51,11 +53,11 @@ public class Infix2Postfix {
         switch (ch) {
             case '+':
             case '-':
-                this.operatorsPred(ch, 1);
+                this.operatorsPred(ch, 1); //less precedence for + and - operators
                 break;
             case '*':
             case '/':
-                this.operatorsPred(ch, 2);
+                this.operatorsPred(ch, 2); //more precedence for * and / operators
                 break;
             case '(':
                 this.stack.push(ch);
@@ -63,9 +65,9 @@ public class Infix2Postfix {
             case ')':
                 while (!this.stack.isEmpty()) {
                     char ch2 = this.stack.pop().toString().charAt(0);
-                    if (ch2 == '(') {
+                    if (ch2 == '(') { //quit loop if popped item is (
                         break;
-                    } else {
+                    } else { //otherwise append to the output
                         this.output.append(ch2);
                     }
                 }
@@ -88,7 +90,7 @@ public class Infix2Postfix {
 
             char ch2 = this.stack.pop().toString().charAt(0);
 
-            if (ch2 == '(') {
+            if (ch2 == '(') { //push item if it is (
                 this.stack.push(ch2);
                 break;
             } else {
@@ -100,14 +102,14 @@ public class Infix2Postfix {
                     pred2 = 2;
                 }
 
-                if (pred > pred2) {
+                if (pred > pred2) { //push operator if it has a higher precedence
                     this.stack.push(ch2);
                     break;
                 } else {
-                    this.output.append(ch2);
+                    this.output.append(ch2); //otherwise append to the output
                 }
             }
         }
-        this.stack.push(ch1);
+        this.stack.push(ch1); //push operator
     }
 }
