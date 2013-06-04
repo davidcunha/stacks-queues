@@ -13,6 +13,7 @@ public class QueueImpl<T> {
     private int front;
     private int rear;
     private int nItems;
+    private boolean circular = false;
     private T[] queueArray;
 
     /**
@@ -20,12 +21,13 @@ public class QueueImpl<T> {
      *
      * @param size structure initialization
      */
-    public QueueImpl(int size) {
+    public QueueImpl(int size, boolean circular) {
         this.max = size;
         this.front = 0;
         this.rear = -1;
         this.queueArray = (T[]) new Object[max];
         this.nItems = 0;
+        this.circular = circular;
     }
 
     /**
@@ -33,10 +35,13 @@ public class QueueImpl<T> {
      * elements (circular buffer)
      */
     public void insert(T n) {
-        if (this.isFull()) {
+        if(this.isFull() && !this.circular) {
+            throw new IllegalStateException("queue is full");
+        }
+        if (this.isFull() && this.circular) {
             this.remove();
         }
-        if (this.rear == this.max - 1) {
+        if ((this.rear == this.max - 1) && this.circular) {
             this.rear = -1;
         }
         this.rear++;

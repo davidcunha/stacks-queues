@@ -9,9 +9,24 @@ import pt.davidcunha.stacksqueues.queue.QueueImpl;
  */
 public class QueueTest {
 
+    @Test(expected = IllegalStateException.class)
+    public void setupCircularFalse() {
+        QueueImpl queue = new QueueImpl(5, false);
+        assertTrue(queue.isEmpty());
+        queue.insert(20);
+        queue.insert(30);
+        queue.insert(40);
+        assertFalse(queue.isFull());
+        queue.insert(50);
+        queue.insert(60);
+        assertTrue(queue.isFull());
+        assertEquals(20, queue.peek());
+        queue.insert(70);
+    }
+
     @Test
-    public void setup() {
-        QueueImpl queue = new QueueImpl(5);
+    public void setupCircularTrue() {
+        QueueImpl queue = new QueueImpl(5, true);
         assertTrue(queue.isEmpty());
         queue.insert(20);
         queue.insert(30);
